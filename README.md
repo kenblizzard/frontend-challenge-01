@@ -1,39 +1,46 @@
-# Frontend React challenge
+# Getting Started with Create React App
 
-## **Introduction**
-We would like you to implement a web page, regarding the wireframes provided on the "specs" folder and the svg assets in the "assets" folder, with a tic-tac-toe game. 
-Feel free to add the dependencies you might need to the project and structure it as you wish, so it's perfectly fine if you create it with create-react-app.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The layout should be responsive but you'll only need to guarantee the game's correct behaviour in desktop. Feel also free to create your own (or bootstrap based) color scheme and design.
+## Available Scripts
 
-The only mandatory tech requirement is the usage of React >= 17.
+In the project directory, you can run:
 
-This repo should be cloned and your final work should be submitted as a pull request.
+### `yarn start`
 
- **Game main requirements:**
-- Game board/ grid;
-- Number of victories by player;
-- Count time per game;
-- Page shows congratulations when players win;
-___
- **Game rules/ interactions:**
-- First player to reach 5 victories wins;
-- Detect victories;
-- Highlight victory line and tokens;
-___
-## Bonus features - Game stats
-#### **Option 1:**
-- Percentage of wins for each player;
-- Total play time;
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-#### **Option 2:**
-- Played games counter;
-- History of game winners;
-- Total play time;
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Bonus features - Extending the game
-- Have the ability to switch between 3x3, 6x6 and 9x9 grid with the same game requirements fulfilled;
+### `yarn test`
 
-## Bonus features - Testing
-- Implement a full set of unit tests to assert the game's correct behaviour;
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
