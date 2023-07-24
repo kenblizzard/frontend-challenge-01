@@ -15,4 +15,5 @@ export const BoardSizeButtonContainer = styled.div`
 export const BoardSizeButton = styled.button`
     width: 80px;
     padding: 10px;
+    cursor: pointer;
 `

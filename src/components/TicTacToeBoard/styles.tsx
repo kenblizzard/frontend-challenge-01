@@ -15,9 +15,9 @@ interface TicTacToeTableCellProps {
 }
 
 export const TicTacToeTableCell = styled.div<TicTacToeTableCellProps>`
-  padding: 30px;
-  height: 60px;
-  width: 60px;
+  padding: 20px;
+  height: 50px;
+  width: 50px;
   border: solid 1px black;
   background-color: ${(props) => (props.$isWinningLine ? "#66ff99" : "none")};
   cursor: ${(props) => (!props.$hasFilled ? "pointer" : "not-allowed")};

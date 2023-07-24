@@ -3,7 +3,7 @@ import TicTacToeBoard, {
   Winner,
 } from "../components/TicTacToeBoard/TicTacToeBoard";
 import GameWinner from "../components/GameWinner";
-import GameOver from "../components/GameOver";
+import GameMainMenu from "../components/GameMainMenu";
 import GameStats from "../components/GameStats";
 
 interface Games {
@@ -80,7 +80,7 @@ const TikTacToeApp = () => {
     <div className="App">
       <h2 style={{ textAlign: "center" }}>Tic Tac Toe Game</h2>
       {isGameOver && (
-        <GameOver winner="x" onSelectBoardSize={handleSelectBoardSize} />
+        <GameMainMenu winner="x" onSelectBoardSize={handleSelectBoardSize} />
       )}
       {!isGameOver && (
         <>

@@ -4,7 +4,7 @@ import {
   GameOverLayout,
 } from "./styles";
 
-const GameOver = ({
+const GameMainMenu = ({
   winner,
   onSelectBoardSize,
 }: {
@@ -30,4 +30,4 @@ const GameOver = ({
   );
 };
 
-export default GameOver;
+export default GameMainMenu;

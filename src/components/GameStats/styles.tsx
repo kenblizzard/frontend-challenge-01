@@ -47,7 +47,8 @@ export const WinPercentage = styled.div<WinPercentageProps>`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: lightgray;
+  background: rgba(0,0,0,0.05);
+  font-weight: bold;
 
   border: ${props => props.type === 'win' ? 'solid 1px green' : 'solid 1px red'}
 
@@ -84,5 +85,5 @@ export const GamesHistoryBox = styled.div`
   align-items: center;
   width: 40px;
   height: 40px;
-  border: 1px solid black;
+  border: 2px solid black;
 `;
