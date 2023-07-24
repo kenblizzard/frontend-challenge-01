@@ -10,6 +10,7 @@ import {
 
 import { ReactComponent as OIcon } from "../../assets/o.svg";
 import { ReactComponent as XIcon } from "../../assets/x.svg";
+import GameTimer from "../GameTimer";
 
 export type BoardCell = null | "x" | "o";
 export type Coordinates = { x: number; y: number };
@@ -50,7 +51,6 @@ const TicTacToeBoard = ({
 
   useEffect(() => {
     let winner = checkForWinner(boardCells, boardSize);
-    console.log(winner);
 
     if (winner) {
       onPlayerWin(winner);
@@ -112,6 +112,8 @@ const TicTacToeBoard = ({
             ))}
           </TicTacToeTableRow>
         ))}
+
+        <GameTimer status={winnerCells.length > 0 || moveCount === boardSize * boardSize ? "stop-reset" : "start"} />
       </TicTacToeTable>
       <PlayerWinContainer>
         <h3>Player 2</h3>

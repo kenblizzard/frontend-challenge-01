@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TicTacToeBoard, {
   Winner,
 } from "../components/TicTacToeBoard/TicTacToeBoard";
 import GameWinner from "../components/GameWinner";
 import GameOver from "../components/GameOver";
+import GameStats from "../components/GameStats";
 
 interface Games {
   winner: null | "x" | "o";
 }
 const TikTacToeApp = () => {
   const [games, setGames] = useState<Games[]>([]);
-  const [boardSize, setBoardSize] = useState<number>(3);
+  const [boardSize, setBoardSize] = useState<number>(0);
   const [hasWinner, setHasWinner] = useState<"x" | "o" | null>(null);
   const [isGameTie, setGameTie] = useState<boolean>(false);
   const [resetBoard, setResetBoard] = useState<boolean>(false);
@@ -21,11 +22,13 @@ const TikTacToeApp = () => {
 
     if (player1Wins === 5) {
       setIsGameOver(true);
+      setBoardSize(0);
       return;
     }
     const player2Wins = games.filter(({ winner }) => winner === "o").length;
     if (player2Wins === 5) {
       setIsGameOver(true);
+      setBoardSize(0);
       return;
     }
   }, [games]);
@@ -58,7 +61,20 @@ const TikTacToeApp = () => {
   const handleSelectBoardSize = (boardSize: number) => {
     setBoardSize(boardSize);
     setIsGameOver(false);
+    setHasWinner(null);
     setGames([]);
+  };
+
+  const getGameTimerStatus = () => {
+    if (hasWinner || isGameTie) {
+      return "stop";
+    } else if (isGameOver) {
+      return "reset";
+    } else if (!isGameOver) {
+      return "start";
+    }
+
+    return "reset";
   };
   return (
     <div className="App">
@@ -68,6 +84,9 @@ const TikTacToeApp = () => {
       )}
       {!isGameOver && (
         <>
+          {(hasWinner || isGameTie) && (
+            <GameWinner winner={hasWinner} onNextGame={handleNextGame} />
+          )}
           <TicTacToeBoard
             boardSize={boardSize}
             player1WinCount={
@@ -82,11 +101,9 @@ const TikTacToeApp = () => {
             onGameTie={handleGameTie}
             onPlayerWin={handlePlayerWin}
           />
-          {(hasWinner || isGameTie) && (
-            <GameWinner winner={hasWinner} onNextGame={handleNextGame} />
-          )}
         </>
       )}
+      <GameStats games={games} gameTimerStatus={getGameTimerStatus()} />
     </div>
   );
 };
