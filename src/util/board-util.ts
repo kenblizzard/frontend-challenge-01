@@ -1,7 +1,7 @@
-import { BoardCell, Winner } from "../components/TicTacToeBoard/TicTacToeBoard";
+import { BoardCellValues, Winner } from "../components/TicTacToeBoard/TicTacToeBoard";
 
-export const initialize2dArray = (size: number): BoardCell[][] => {
-    let tempArray: BoardCell[][] = new Array(size).fill(null)
+export const initialize2dArray = (size: number): BoardCellValues[][] => {
+    let tempArray: BoardCellValues[][] = new Array(size).fill(null)
         .map(() =>
             new Array(size).fill(null)
         );
@@ -9,24 +9,23 @@ export const initialize2dArray = (size: number): BoardCell[][] => {
     return tempArray
 }
 
-export const checkForWinner = (boardCells: BoardCell[][], boardSize: number): Winner => {
+export const checkForWinner = (boardCells: BoardCellValues[][], boardSize: number): Winner => {
 
     let winningCells = []
     let firstMove = boardCells[0][0];
     // diagonal
-    for (let x = 0; x < boardSize; x++) {
+    for (let row = 0; row < boardSize; row++) {
         if (!firstMove) {
             break;
         }
         let hasWinner = true
-        winningCells.push({ x, y: x })
-        if (boardCells[x][x] !== firstMove) {
+        winningCells.push({  row, col: row })
+        if (boardCells[row][row] !== firstMove) {
             hasWinner = false
             winningCells = []
         }
 
         if (hasWinner && winningCells.length === boardSize) {
-            console.log('1')
             return {
                 winner: firstMove,
                 winningCells
@@ -36,20 +35,19 @@ export const checkForWinner = (boardCells: BoardCell[][], boardSize: number): Wi
 
     winningCells = []
     firstMove = boardCells[0][boardSize - 1];
-    for (let x = 0; x < boardSize; x++) {
+    for (let row = 0; row < boardSize; row++) {
         if (!firstMove) {
             break;
         }
         let hasWinner = true
-        winningCells.push({ x, y: boardSize - x - 1 })
+        winningCells.push({ row, col: boardSize - row - 1 })
 
-        if (boardCells[x][boardSize - x - 1] !== firstMove) {
+        if (boardCells[row][boardSize - row - 1] !== firstMove) {
             hasWinner = false
             winningCells = []
         }
 
         if (hasWinner && winningCells.length === boardSize) {
-            console.log('2')
             return {
                 winner: firstMove,
                 winningCells
@@ -58,23 +56,22 @@ export const checkForWinner = (boardCells: BoardCell[][], boardSize: number): Wi
     }
 
     //vertical and horizontal
-    for (let x = 0; x < boardSize; x++) {
+    for (let row = 0; row < boardSize; row++) {
 
-        let firstMove = boardCells[x][0];
+        let firstMove = boardCells[row][0];
         if (firstMove) {
             let hasWinner = true
             let winningCells = []
-            for (let y = 0; y < boardSize; y++) {
-                winningCells.push({ x, y })
+            for (let col = 0; col < boardSize; col++) {
+                winningCells.push({ row, col })
 
-                if (boardCells[x][y] !== firstMove) {
+                if (boardCells[row][col] !== firstMove) {
                     hasWinner = false
                     winningCells = []
                 }
             }
 
             if (hasWinner) {
-                console.log('3')
                 return {
                     winner: firstMove,
                     winningCells
@@ -83,20 +80,19 @@ export const checkForWinner = (boardCells: BoardCell[][], boardSize: number): Wi
         }
 
 
-        firstMove = boardCells[0][x];
+        firstMove = boardCells[0][row];
         if (firstMove) {
             let hasWinner = true
             let winningCells = []
-            for (let y = 0; y < boardSize; y++) {
-                winningCells.push({ x: y, y: x })
+            for (let col = 0; col < boardSize; col++) {
+                winningCells.push({ row: col, col: row })
 
-                if (boardCells[y][x] !== firstMove) {
+                if (boardCells[col][row] !== firstMove) {
                     hasWinner = false
                 }
             }
 
             if (hasWinner) {
-                console.log('4')
                 return {
                     winner: firstMove,
                     winningCells

@@ -33,13 +33,13 @@ const TikTacToeApp = () => {
     }
   }, [games]);
 
-  const handlePlayerWin = (winner: Winner) => {
-    games.push({ winner: winner!.winner });
+  const handlePlayerWin = (result: Winner) => {
+    games.push({ winner: result!.winner });
 
     let updatedGames = games.concat();
 
     setGames(updatedGames);
-    setHasWinner(winner!.winner);
+    setHasWinner(result!.winner);
   };
 
   const handleNextGame = () => {
@@ -80,7 +80,7 @@ const TikTacToeApp = () => {
     <div className="App">
       <h2 style={{ textAlign: "center" }}>Tic Tac Toe Game</h2>
       {isGameOver && (
-        <GameMainMenu winner="x" onSelectBoardSize={handleSelectBoardSize} />
+        <GameMainMenu winner={hasWinner as string} onSelectBoardSize={handleSelectBoardSize} />
       )}
       {!isGameOver && (
         <>

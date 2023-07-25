@@ -12,8 +12,8 @@ import { ReactComponent as OIcon } from "../../assets/o.svg";
 import { ReactComponent as XIcon } from "../../assets/x.svg";
 import GameTimer from "../GameTimer";
 
-export type BoardCell = null | "x" | "o";
-export type Coordinates = { x: number; y: number };
+export type BoardCellValues = null | "x" | "o";
+export type Coordinates = { row: number; col: number };
 export type Winner = {
   winner: null | "x" | "o";
   winningCells: Coordinates[];
@@ -45,7 +45,7 @@ const TicTacToeBoard = ({
   const [moveCount, setMoveCount] = useState<number>(0);
   const [currentPlayer, setCurrentPlayer] = useState<"x" | "o">("o");
   const [winnerCells, setWinnerCells] = useState<Coordinates[]>([]);
-  const [boardCells, setBoardCells] = useState<BoardCell[][]>(
+  const [boardCells, setBoardCells] = useState<BoardCellValues[][]>(
     initialize2dArray(boardSize)
   );
 
@@ -88,26 +88,26 @@ const TicTacToeBoard = ({
   };
 
   return (
-    <GameLayout>
+    <GameLayout data-testid="tictactoe-board">
       <PlayerWinContainer>
         <h3>Player 1</h3>
         <span>{player1WinCount}</span>
       </PlayerWinContainer>
       <TicTacToeTable>
-        {[...Array(boardSize)].map((item, x) => (
-          <TicTacToeTableRow key={`row-${x}`}>
-            {[...Array(boardSize)].map((item2, y) => (
+        {[...Array(boardSize)].map((item, row) => (
+          <TicTacToeTableRow key={`row-${row}`}>
+            {[...Array(boardSize)].map((item2, col) => (
               <TicTacToeTableCell
-                key={`cell-${x}-${y}`}
-                onClick={() => handleClickBoardCell(x, y)}
-                $hasFilled={boardCells[x][y]}
+                key={`cell-${row}-${col}`}
+                onClick={() => handleClickBoardCell(row, col)}
+                $hasFilled={boardCells[row][col]}
                 $isWinningLine={winnerCells.find(
-                  (cell: Coordinates) => cell.x === x && cell.y === y
+                  (cell: Coordinates) => cell.row === row && cell.col === col
                 )}
-                data-testid={`cell-${x}-${y}`}
+                data-testid={`cell-${row}-${col}`}
               >
-                {boardCells[x][y] === "x" && <XIcon />}
-                {boardCells[x][y] === "o" && <OIcon />}
+                {boardCells[row][col] === "x" && <XIcon />}
+                {boardCells[row][col] === "o" && <OIcon />}
               </TicTacToeTableCell>
             ))}
           </TicTacToeTableRow>

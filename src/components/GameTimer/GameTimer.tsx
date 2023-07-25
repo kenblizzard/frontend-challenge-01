@@ -28,8 +28,8 @@ const GameTimer = ({
         reset();
         break;
       case "stop-reset":
-        reset();
         startAndStop();
+        reset();
         break;
     }
   }, [status]);

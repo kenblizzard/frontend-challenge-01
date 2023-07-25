@@ -13,16 +13,27 @@ const GameMainMenu = ({
 }) => {
   return (
     <GameOverLayout>
-      {<h3>{winner === "x" ? "Player 1 Wins" : "Player 2 Wins"}</h3>}
-      <h4>Please select board size to start new game</h4>
+      {winner && <h1 data-testid="txt-overall-game-winner">{winner === "x" ? "Player 1 Wins" : "Player 2 Wins"}</h1>}
+      <h4 data-testid="menu-message">
+        Please select board size to start new game
+      </h4>
       <BoardSizeButtonContainer>
-        <BoardSizeButton onClick={() => onSelectBoardSize(3)}>
+        <BoardSizeButton
+          data-testid="menu-btn-board-size-3"
+          onClick={() => onSelectBoardSize(3)}
+        >
           3x3
         </BoardSizeButton>
-        <BoardSizeButton onClick={() => onSelectBoardSize(7)}>
+        <BoardSizeButton
+          data-testid="menu-btn-board-size-6"
+          onClick={() => onSelectBoardSize(6)}
+        >
           6x6
         </BoardSizeButton>
-        <BoardSizeButton onClick={() => onSelectBoardSize(9)}>
+        <BoardSizeButton
+          data-testid="menu-btn-board-size-9"
+          onClick={() => onSelectBoardSize(9)}
+        >
           9x9
         </BoardSizeButton>
       </BoardSizeButtonContainer>

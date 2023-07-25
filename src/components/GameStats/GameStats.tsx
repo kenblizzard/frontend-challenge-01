@@ -20,12 +20,12 @@ const GameStats = ({
 }) => {
   let player1Wins = games.filter(({ winner }) => winner === "x").length;
   let player2Wins = games.filter(({ winner }) => winner === "o").length;
-  let player1WinPercentage = `${
-    (((player1Wins / (player1Wins + player2Wins)) * 100) || 0).toFixed(0)
-  } %`;
-  let player2WinPercentage = `${
-    (((player2Wins / (player1Wins + player2Wins)) * 100) || 0).toFixed(0)
-  } %`;
+  let player1WinPercentage = `${(
+    (player1Wins / (player1Wins + player2Wins)) * 100 || 0
+  ).toFixed(0)} %`;
+  let player2WinPercentage = `${(
+    (player2Wins / (player1Wins + player2Wins)) * 100 || 0
+  ).toFixed(0)} %`;
   return (
     <GameStatsLayout>
       <h2>STATS</h2>
@@ -37,11 +37,15 @@ const GameStats = ({
               PLAYER 1
               <RowLayout>
                 <ColumnLayout>
-                  <WinPercentage type="win">{player1WinPercentage}</WinPercentage>
+                  <WinPercentage type="win" data-testid="txt-player1-win-percentage">
+                    {player1WinPercentage}
+                  </WinPercentage>
                   <span>V</span>
                 </ColumnLayout>
                 <ColumnLayout>
-                  <WinPercentage type="lose">{player2WinPercentage}</WinPercentage>
+                  <WinPercentage type="lose" data-testid="txt-player1-lose-percentage">
+                    {player2WinPercentage}
+                  </WinPercentage>
                   <span>L</span>
                 </ColumnLayout>
               </RowLayout>
@@ -50,11 +54,15 @@ const GameStats = ({
               PLAYER 2
               <RowLayout>
                 <ColumnLayout>
-                  <WinPercentage type="win">{player2WinPercentage}</WinPercentage>
+                  <WinPercentage type="win" data-testid="txt-player2-win-percentage">
+                    {player2WinPercentage}
+                  </WinPercentage>
                   <span>V</span>
                 </ColumnLayout>
                 <ColumnLayout>
-                  <WinPercentage type="lose">{player1WinPercentage}</WinPercentage>
+                  <WinPercentage type="lose" data-testid="txt-player2-lose-percentage">
+                    {player1WinPercentage}
+                  </WinPercentage>
                   <span>L</span>
                 </ColumnLayout>
               </RowLayout>
@@ -66,7 +74,11 @@ const GameStats = ({
             <h3>Played Games</h3>
             <RowLayout>
               {[...Array(9)].map((item, index) => (
-                <GamesPlayedDot played={index < games.length} />
+                <GamesPlayedDot
+                  key={`gamesplayed-${index}`}
+                  data-testid={`gamesplayed-${index}`}
+                  played={index < games.length}
+                />
               ))}
             </RowLayout>
           </ColumnLayout>
@@ -75,7 +87,10 @@ const GameStats = ({
             <h3>Games History</h3>
             <RowLayout>
               {[...Array(9)].map((item, index) => (
-                <GamesHistoryBox>
+                <GamesHistoryBox
+                  key={`history-${index}`}
+                  data-testid={`history-${index}`}
+                >
                   {!games[index]
                     ? ""
                     : games[index].winner === "x"

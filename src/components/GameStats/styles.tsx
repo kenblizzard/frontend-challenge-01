@@ -5,7 +5,6 @@ export const GameStatsLayout = styled.div`
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   padding: 3rem;
   margin-top: 3rem;
 `;
