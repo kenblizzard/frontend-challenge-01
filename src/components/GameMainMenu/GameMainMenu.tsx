@@ -2,6 +2,7 @@ import {
   BoardSizeButton,
   BoardSizeButtonContainer,
   GameOverLayout,
+  WinnerBanner,
 } from "./styles";
 
 const GameMainMenu = ({
@@ -13,7 +14,13 @@ const GameMainMenu = ({
 }) => {
   return (
     <GameOverLayout>
-      {winner && <h1 data-testid="txt-overall-game-winner">{winner === "x" ? "Player 1 Wins" : "Player 2 Wins"}</h1>}
+      {winner && (
+        <WinnerBanner>
+          <h1 data-testid="txt-overall-game-winner">
+            {winner === "x" ? "Player 1 Wins" : "Player 2 Wins"}
+          </h1>
+        </WinnerBanner>
+      )}
       <h4 data-testid="menu-message">
         Please select board size to start new game
       </h4>

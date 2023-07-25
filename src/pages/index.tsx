@@ -78,7 +78,7 @@ const TikTacToeApp = () => {
   };
   return (
     <div className="App">
-      <h2 style={{ textAlign: "center" }}>Tic Tac Toe Game</h2>
+      <h1 style={{ textAlign: "center" }}>Tic Tac Toe Game</h1>
       {isGameOver && (
         <GameMainMenu winner={hasWinner as string} onSelectBoardSize={handleSelectBoardSize} />
       )}

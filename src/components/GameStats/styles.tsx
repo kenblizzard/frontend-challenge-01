@@ -56,6 +56,7 @@ export const WinPercentage = styled.div<WinPercentageProps>`
 export const RowLayout = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
 `;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const TicTacToeTable = styled.div`
   display: flex;
   flex-flow: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TicTacToeTableRow = styled.div`
@@ -27,6 +29,10 @@ export const GameLayout = styled.div`
   display: flex;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 1024px) {
+    flex-flow: column;
+  }
 `;
 
 export const PlayerWinContainer = styled.div`

@@ -9,6 +9,24 @@ describe("TicTacToe App", () => {
   test("render TicTacToe app initial screen", () => {
     expect(screen.getByTestId("menu-message")).toBeTruthy();
     expect(screen.getByTestId("menu-btn-board-size-3")).toBeTruthy();
+
+    // game stats initial state
+    expect(screen.getByTestId("history-0").innerHTML).toBeFalsy();
+    expect(screen.getByTestId("history-1").innerHTML).toBeFalsy();
+    expect(screen.getByTestId("history-2").innerHTML).toBeFalsy();
+
+    expect(screen.getByTestId("txt-player1-win-percentage").innerHTML).toBe(
+      "0 %"
+    );
+    expect(screen.getByTestId("txt-player1-lose-percentage").innerHTML).toBe(
+      "0 %"
+    );
+    expect(screen.getByTestId("txt-player2-win-percentage").innerHTML).toBe(
+      "0 %"
+    );
+    expect(screen.getByTestId("txt-player2-lose-percentage").innerHTML).toBe(
+      "0 %"
+    );
   });
 
   test("shoulder render 3x3 board after selecting 3x3 size optiion", () => {
@@ -149,7 +167,29 @@ describe("TicTacToe App", () => {
     expect(screen.getByTestId("cell-0-0")).toBeTruthy();
     // check if last cell has rendered
     expect(screen.getByTestId("cell-5-5")).toBeTruthy();
+
+    // check game stats initial state
+    
   });
+
+  test("game stats should reset on new game", () => {
+    expect(screen.getByTestId("history-0").innerHTML).toBeFalsy();
+    expect(screen.getByTestId("history-1").innerHTML).toBeFalsy();
+    expect(screen.getByTestId("history-2").innerHTML).toBeFalsy();
+
+    expect(screen.getByTestId("txt-player1-win-percentage").innerHTML).toBe(
+      "0 %"
+    );
+    expect(screen.getByTestId("txt-player1-lose-percentage").innerHTML).toBe(
+      "0 %"
+    );
+    expect(screen.getByTestId("txt-player2-win-percentage").innerHTML).toBe(
+      "0 %"
+    );
+    expect(screen.getByTestId("txt-player2-lose-percentage").innerHTML).toBe(
+      "0 %"
+    );
+  })
 
   test("simulate game is tie scenario", () => {
     // x

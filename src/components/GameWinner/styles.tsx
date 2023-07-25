@@ -10,6 +10,7 @@ export const GameWinnerLayout = styled.div`
   border: dotted 1px black;
   border-radius: 5px;
   background: rgba(0,0,0,0.05);
+  color: green;
 `;
 
 export const NextGameButton = styled.button`
