@@ -133,7 +133,7 @@ describe("TicTacToe App", () => {
 
     // Check is player 1 the game
     expect(screen.getByTestId("txt-overall-game-winner").innerHTML).toBe(
-      "Player 1 Wins"
+      "Congratulations! Player 1 Wins"
     );
   });
 

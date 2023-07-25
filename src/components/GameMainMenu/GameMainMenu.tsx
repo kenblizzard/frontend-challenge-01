@@ -17,7 +17,7 @@ const GameMainMenu = ({
       {winner && (
         <WinnerBanner>
           <h1 data-testid="txt-overall-game-winner">
-            {winner === "x" ? "Player 1 Wins" : "Player 2 Wins"}
+            Congratulations! {winner === "x" ? "Player 1 Wins" : "Player 2 Wins"} 
           </h1>
         </WinnerBanner>
       )}
